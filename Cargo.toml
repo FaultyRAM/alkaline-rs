@@ -3,13 +3,29 @@ name = "bindgen-openal-sys"
 version = "0.1.0"
 authors = ["FaultyRAM <explodingpsu@gmail.com>"]
 links = "openal"
-build = "build.rs"
+build = "build/main.rs"
 description = "Raw, machine-generated bindings to OpenAL."
 repository = "https://github.com/FaultyRAM/bindgen-openal"
 readme = "README.md"
 keywords = ["OpenAL", "audio", "spatialization", "3D"]
 categories = ["external-ffi-bindings", "multimedia::audio", "no-std"]
 license = "Apache-2.0 OR MIT"
+
+[dependencies.libc]
+version = "0.2"
+default-features = false
+
+[build-dependencies]
+bindgen = "0.37"
+
+[target.'cfg(not(target_env = "msvc"))'.build-dependencies]
+pkg-config = "0.3"
+
+[target.'cfg(all(target_os = "windows", target_env = "msvc"))'.build-dependencies]
+vcpkg = "0.2"
+
+[target.'cfg(target_os = "windows")'.build-dependencies]
+winreg = "0.5"
 
 [profile.release]
 codegen-units = 1

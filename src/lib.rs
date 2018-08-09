@@ -16,12 +16,13 @@
     unused,
     missing_copy_implementations,
     missing_debug_implementations,
-    missing_docs,
     trivial_casts,
     trivial_numeric_casts,
     unused_qualifications,
     unused_results
 )]
+#![deny(unused_qualifications)]
+#![allow(bad_style)]
 #![cfg_attr(
     feature = "cargo-clippy",
     forbid(
@@ -33,3 +34,7 @@
         clippy_style,
     )
 )]
+
+extern crate libc;
+
+include!(concat!(env!("OUT_DIR"), "/bindings.rs"));

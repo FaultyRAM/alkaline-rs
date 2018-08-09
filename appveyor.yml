@@ -7,20 +7,33 @@ environment:
   matrix:
     - CHANNEL: stable
       CHECK: check
+      OPENAL: sdk
+    - CHANNEL: stable
+      CHECK: check
+      OPENAL: soft
     - CHANNEL: beta
       CHECK: check
+      OPENAL: sdk
+    - CHANNEL: beta
+      CHECK: check
+      OPENAL: soft
     - CHANNEL: nightly
       CHECK: clippy
+      OPENAL: sdk
+    - CHANNEL: nightly
+      CHECK: clippy
+      OPENAL: soft
 matrix:
   allow_failures:
     - CHANNEL: beta
     - CHANNEL: nightly
 install:
   - SET PATH=%USERPROFILE%\.cargo\bin;%PATH%
+  - ps: if ($Env:OPENAL -eq "sdk") { Start-FileDownload "https://openal.org/downloads/OpenAL11CoreSDK.zip"; 7z e "-o." -y ./OpenAL11CoreSDK.zip OpenAL11CoreSDK.exe; ./OpenAL11CoreSDK.exe /S /V/qn | Out-Null } else { vcpkg install openal-soft:x64-windows; $Env:VCPKGRS_DYNAMIC = 1 }
   - ps: Start-FileDownload "https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe"
   - rustup-init.exe -y --no-modify-path --default-host x86_64-pc-windows-msvc --default-toolchain %CHANNEL%
   - rustup component add rustfmt-preview
-  - IF "%CHANNEL%"=="nightly" rustup component add clippy-preview && cargo clippy -V
+  - IF "%CHECK%"=="clippy" rustup component add clippy-preview && cargo clippy -V
   - rustup -vV
   - rustc -vV
   - cargo -vV

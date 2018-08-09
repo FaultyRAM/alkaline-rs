@@ -4,7 +4,7 @@ branches:
     - trying
     - master
 dist: trusty
-sudo: false
+sudo: true
 language: rust
 matrix:
   include:
@@ -29,9 +29,11 @@ matrix:
   allow_failures:
     - rust: beta
     - rust: nightly
+before_install:
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install -y libopenal-dev && export PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1; else brew install openal-soft && export PKG_CONFIG_PATH=/usr/local/opt/openal-soft/lib/pkgconfig; fi
 install:
   - rustup component add rustfmt-preview
-  - if [ "$TRAVIS_RUST_VERSION" = "nightly" ]; then rustup component add clippy-preview; cargo clippy -V; fi
+  - if [ "$CHECK" = "clippy" ]; then rustup component add clippy-preview && cargo clippy -V; fi
   - cargo fmt -v --version
 script:
   - cargo $CHECK -vv --tests
