@@ -1,0 +1,41 @@
+branches:
+  only:
+    - staging
+    - trying
+    - master
+dist: trusty
+sudo: false
+language: rust
+matrix:
+  include:
+    - rust: stable
+      os: linux
+      env: CHECK=check
+    - rust: beta
+      os: linux
+      env: CHECK=check
+    - rust: nightly
+      os: linux
+      env: CHECK=clippy
+    - rust: stable
+      os: osx
+      env: CHECK=check
+    - rust: beta
+      os: osx
+      env: CHECK=check
+    - rust: nightly
+      os: osx
+      env: CHECK=clippy
+  allow_failures:
+    - rust: beta
+    - rust: nightly
+install:
+  - rustup component add rustfmt-preview
+  - if [ "$TRAVIS_RUST_VERSION" = "nightly" ]; then rustup component add clippy-preview; cargo clippy -V; fi
+  - cargo fmt -v --version
+script:
+  - cargo $CHECK -vv --tests
+  - cargo build -vv
+  - cargo doc -vv
+  - cargo test -vv
+  - cargo fmt -- --check -v

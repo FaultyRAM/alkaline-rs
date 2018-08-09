@@ -1,0 +1,15 @@
+[package]
+name = "bindgen-openal-sys"
+version = "0.1.0"
+authors = ["FaultyRAM <explodingpsu@gmail.com>"]
+links = "openal"
+build = "build.rs"
+description = "Raw, machine-generated bindings to OpenAL."
+repository = "https://github.com/FaultyRAM/bindgen-openal"
+readme = "README.md"
+keywords = ["OpenAL", "audio", "spatialization", "3D"]
+categories = ["external-ffi-bindings", "multimedia::audio", "no-std"]
+license = "Apache-2.0 OR MIT"
+
+[profile.release]
+codegen-units = 1
