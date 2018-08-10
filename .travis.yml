@@ -13,7 +13,7 @@ matrix:
       env: CHECK=check
     - rust: beta
       os: linux
-      env: CHECK=check
+      env: CHECK=clippy
     - rust: nightly
       os: linux
       env: CHECK=clippy
@@ -22,7 +22,7 @@ matrix:
       env: CHECK=check
     - rust: beta
       os: osx
-      env: CHECK=check
+      env: CHECK=clippy
     - rust: nightly
       os: osx
       env: CHECK=clippy

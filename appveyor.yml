@@ -12,10 +12,10 @@ environment:
       CHECK: check
       OPENAL: soft
     - CHANNEL: beta
-      CHECK: check
+      CHECK: clippy
       OPENAL: sdk
     - CHANNEL: beta
-      CHECK: check
+      CHECK: clippy
       OPENAL: soft
     - CHANNEL: nightly
       CHECK: clippy
