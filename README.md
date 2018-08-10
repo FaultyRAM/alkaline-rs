@@ -1,11 +1,11 @@
-# bindgen-openal-sys
+# alkaline
 
-[![Travis CI](https://travis-ci.com/FaultyRAM/bindgen-openal-sys.svg)][1]
-[![AppVeyor](https://ci.appveyor.com/api/projects/status/aa58ysiye9ne4in0?retina=true&svg=true)][2]
-[![Crates.io](https://img.shields.io/crates/v/bindgen-openal-sys.svg)][3]
-[![Docs.rs](https://docs.rs/bindgen-openal-sys/badge.svg)][4]
+[![Travis CI](https://travis-ci.com/FaultyRAM/alkaline-rs.svg)][1]
+[![AppVeyor](https://ci.appveyor.com/api/projects/status/2mc30l9atk6n7g0u?retina=true&svg=true)][2]
+[![Crates.io](https://img.shields.io/crates/v/alkaline.svg)][3]
+[![Docs.rs](https://docs.rs/alkaline/badge.svg)][4]
 
-Raw, machine-generated bindings to OpenAL.
+Safe, high-level bindings to OpenAL.
 
 ## License
 
@@ -24,7 +24,7 @@ submitted for inclusion in the work by you, as defined in the Apache-2.0
 license, shall be dual licensed as above, without any additional terms or
 conditions.
 
-[1]: https://travis-ci.com/FaultyRAM/bindgen-openal-sys
-[2]: https://ci.appveyor.com/project/FaultyRAM/bindgen-openal-sys
-[3]: https://crates.io/crates/bindgen-openal-sys
-[4]: https://docs.rs/bindgen-openal-sys
+[1]: https://travis-ci.com/FaultyRAM/alkaline-rs
+[2]: https://ci.appveyor.com/project/FaultyRAM/alkaline-rs
+[3]: https://crates.io/crates/alkaline
+[4]: https://docs.rs/alkaline

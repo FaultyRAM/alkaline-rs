@@ -6,7 +6,7 @@
 // your option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
-//! Safe, high-level bindings to OpenAL.
+//! Raw, machine-generated bindings to OpenAL.
 
 #![no_std]
 #![forbid(
@@ -14,14 +14,15 @@
     future_incompatible,
     rust_2018_idioms,
     unused,
+    missing_copy_implementations,
     missing_debug_implementations,
-    missing_docs,
     trivial_casts,
     trivial_numeric_casts,
     unused_qualifications,
     unused_results
 )]
 #![deny(unused_qualifications)]
+#![allow(bad_style)]
 #![cfg_attr(
     feature = "cargo-clippy",
     forbid(
@@ -34,8 +35,6 @@
     )
 )]
 
-extern crate bindgen_openal_sys;
+extern crate libc;
 
-mod device;
-
-pub use device::Device;
+include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
